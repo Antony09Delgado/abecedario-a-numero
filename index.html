@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>OJO Cuidado </title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { padding: 10px; font-size: 16px; margin-top: 10px; }
+    #resultado { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2> Hello, que haces?</h2>
+  <h6> pasa codigo</h6>
+  <p> solo letras de a-j</p>
+  <input type="text" id="entrada" placeholder="Ejemplo: abcdefghijz">
+  <button onclick="convertir()">ver</button>
+  <div id=resultado"></div>
+
+  <script>
+    function convertir() {
+      const entrada = document.getElementById("entrada").value.toLowerCase();
+      const resultado = [];
+
+      for (let letra of entrada) {
+        if (letra >= 'a' && letra <= 'j'){
+          resultado.push(letra.charCodeAt(0) - 96); // 'a' = 97 = 1
+        } else if (letra === 'z') {
+          resultado.push(0)
+        } else {
+          resultado.push("?");
+        }
+      }
+
+      document.getElementById("resultado").innerText = "Resultado: " + resultado.join(", ");
+    }
+  </script>
+</body>
+</html>
